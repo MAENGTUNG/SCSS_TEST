@@ -1,0 +1,167 @@
+/* 요거는 컴파일 된다는 거지? */
+
+/* 요거는 */
+
+// 요거는 컴파일 안되고
+
+
+
+// 변수
+$title-box-border-bg: orange;
+$color-accent: #d42a78;
+
+
+// mixin
+@mixin title-style($color: green, $bgColor: #eee) {
+    display: inline-block;
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    text-transform: uppercase;
+    border-bottom: 5px solid $title-box-border-bg;
+    color: $color;
+    background: $bgColor;
+}
+
+@mixin shadow($x, $y, $blur, $color) {
+    box-shadow: $x $y $blur $color;
+}
+
+
+.title-box {
+    margin-bottom: 50px;
+}
+.title-box h2 {
+    @include title-style;
+    @include shadow(4px, 4px, 4px, rgba(0,0,0,0.5));
+}
+.title-box h3 {
+    @include title-style($color: red, $bgColor: pink);
+    @include shadow(4px, 4px, 4px, rgba(0,0,0,0.5));
+}
+
+
+.important {
+    font-size: 4em;
+}
+
+
+.alert {
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #fff;
+    background: $color-accent;
+    @include shadow(0, 1px, 2px, rgba(0,0,0,.5));
+}
+.important {
+    font-size: 4em;
+}
+.alert-positive {
+    @extend .alert;
+    @extend .important;
+    background: #9c3;
+}
+
+// 플레이스 홀더
+%button {
+    padding: 10px;
+    font-weight: bold;
+    background: blue;
+    border-radius: 6px;
+}
+
+.buy {
+    @extend %button;
+}
+.submit {
+    @extend %button;
+    background: green;
+}
+
+header {
+    overflow: hidden;
+    margin: 20px 0 30px 0;
+    border-bottom: 4px solid #333;
+    background: #655544;
+
+    &.store {
+        background: maroon;
+    }
+}
+
+header {
+
+    #logo {
+        float: left;
+        margin: 0 20px 0 0;
+        width: 30%;
+
+        img {
+            display: block;
+            opacity: .95;
+        }
+    }
+}
+
+header {
+
+    .banner {
+        float: right;
+        width: 70%;
+
+        h1 {
+            padding: 15px 0;
+            font: {
+                size: 54px;
+                weight: bold;
+            }
+            line-height: 1;
+        }
+    }
+}
+
+header {
+
+    .banner {
+
+        ul {
+            overflow: hidden;
+            background: #254555;
+
+            li {
+                float: left;
+                list-style: none;
+
+                a {
+                    display: block;
+                    margin-right: 50px;
+                    padding: 10px 5px;
+                    color: #fff;
+                    text: {
+                        transform: uppercase;
+                        decoration: none;
+                    }
+
+                    &.home {
+                        color: #668844;
+                    }
+
+                    &.bands {
+                        color: #227744;
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: maroon;
+                    }
+                }
+            }
+        }
+    }
+}
